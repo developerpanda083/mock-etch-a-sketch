@@ -1,0 +1,35 @@
+* {
+    box-sizing: border-box;
+}
+
+.canvas {
+    padding: 0;
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+    width: 35%;
+    margin: auto;
+}
+
+.canvas-square {
+    border: 1px solid black;
+    display: inline-block; 
+    justify-content: space-evenly;
+    width: 6.25%;
+    padding-bottom: 6.25%;
+}
+/* 
+.canvas-square {
+    border: 1px solid black;
+    height: 25px;
+    width: 25px;
+} */
+
+/* 
+.canvas {
+    padding: 0;
+    display: grid;
+    grid-template-columns: repeat(16, 25px [col-start]);
+    width: 80%;
+    column-gap: 0;
+} */
