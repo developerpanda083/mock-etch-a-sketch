@@ -2,43 +2,23 @@ const canvas = document.getElementById('canvas')
 let sliderInput = document.getElementById('size-input');
 const sizeDisplay = document.getElementById('size-display');
 const canvasContainer = document.getElementById('canvas-container');
+const smallBtn = document.getElementById('small-btn');
+const medBtn = document.getElementById('med-btn');
+const largeBtn = document.getElementById('large-btn');
+let colorPicker = document.getElementById('color-picker');
+const eraserBtn = document.getElementById('eraser-btn');
 
-//known issues: resizing window erases progress
-
-
-cloneSqr(sliderInput.valueAsNumber);
-
-
-const canvasSqrAll = document.querySelectorAll('.canvas-sqr');
-
-sizeDisplay.innerHTML = sliderInput.value; // shows initial value of slider, currently hardcorded @ 16 in html
-// listens for changes in input on the slider
-sliderInput.addEventListener('input', e => {
-    // get value of slider
-    let val = e.target.valueAsNumber;
-    // display value of slider
-    sizeDisplay.innerHTML = val
-
-    canvas.innerHTML = '';
-
-    cloneSqr(val);
+//known issues: resizing window erases progress, resizing causes canvas squares to reorganize
 
 
-}); 
+cloneSqr(16);
 
-// redraws the canvas when the window is resized
-window.addEventListener('resize', () => {
-    // clears children divs
-    canvas.innerHTML = '';
-    // create children divs
-    cloneSqr(sliderInput.valueAsNumber);
-});
 
 
 
 function cloneSqr (side) {
-    for (let i = 0; i < (side**2); i++) {
-        // calcs the size of one side of the canvas
+    for (let i = 0; i < (side*side); i++) {
+        // calcs the size of one side of the canvas 
         let canvasSize = canvas.clientWidth / side;
 
         let canvasSqrClone = document.createElement('div');
@@ -46,17 +26,52 @@ function cloneSqr (side) {
         canvasSqrClone.classList.add('canvas-sqr');
         canvasSqrClone.style.width = canvasSize + 'px';
         canvasSqrClone.style.height = canvasSize + 'px';
+
+        let isClicked = false;
+
+        window.addEventListener('mousedown', () => {isClicked = true});
+        window.addEventListener('mouseup', () => {
+            if (isClicked == true) {isClicked = false}
+        });
+
+        const canvasSqrAll = document.querySelectorAll('.canvas-sqr');
+
+        for (let sqr = 0; sqr < canvasSqrAll.length; sqr++) {
+            canvasSqrAll[sqr].addEventListener('mousemove', (e) => {
+                if (isClicked == true) {rainbowColor(e)}
+            });
+        }; 
     };
 };
 
+smallBtn.addEventListener('click', () => {
+    canvas.innerHTML = '';
+    cloneSqr(3);
+});
+
+medBtn.addEventListener('click', () => {
+    canvas.innerHTML = '';
+    cloneSqr(16);
+});
+
+largeBtn.addEventListener('click', () => {
+    canvas.innerHTML = '';
+    cloneSqr(25);
+});
+
+eraserBtn.addEventListener('click', (e) => {
+    canvas.style.backgroundColor = "white";
+});
 
 
-function mouseOver (e) {
-    e.target.style.backgroundColor = "red";
+function mouseMove (e) {
+    e.target.style.backgroundColor = colorPicker.value;
 };
 
+function rainbowColor (e) {
+    let randr = (Math.round(Math.random() * 255)).toString();
+    let randg = (Math.round(Math.random() * 255)).toString();
+    let randb = (Math.round(Math.random() * 255)).toString();
 
-canvas
-for (let sqr = 0; sqr < canvasSqrAll.length; sqr++) {
-    canvasSqrAll[sqr].addEventListener('mouseover',mouseOver);
+    e.target.style.backgroundColor = 'rgb(' + randr + ',' + randg + ',' + randb + ')'
 }

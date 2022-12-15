@@ -9,9 +9,13 @@
 </head>
 <body>
     <h1>Mock Etch-a-Sketch</h1>
-    <div class="slider-container"></div>
-        <p>Slider <span id="size-display"></span></p>
-        <input type="range" min="1" max="50" value="16" id="size-input">
+    <div class="slider-container">
+        <button id="small-btn">3x3</button>
+        <button id="med-btn">16x16</button>
+        <button id="large-btn">25x25</button>
+        <button id="eraser-btn">Clear</button>
+        <input type="color" id="color-picker">
+    </div>
 
     <div id="canvas-container" >
         <div id="canvas">

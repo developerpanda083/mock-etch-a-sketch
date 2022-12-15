@@ -8,23 +8,29 @@
     display: flex;
     align-items: center;
     flex-wrap: wrap;
-    width: 28%;
-    padding-bottom: 7%;
-    height: 0;
+    width: 35vw;
+    padding-bottom: 7vw;
+    height: 35vw;
     margin: auto;
 }
 
-
+#canvas-container {
+    display: flex;
+    padding: 0;
+    overflow: hidden;
+    
+}
 
 .canvas-sqr {
     border: 1px solid black;
-    justify-content: space-evenly;
+    justify-content: space-around;
     width: 1%;
     padding-bottom: 1%;
-    display: flex;
+    display:inline-flex ;
     flex: 0 0 auto;
     box-sizing: border-box;
 }
+
 
 
 /* 
