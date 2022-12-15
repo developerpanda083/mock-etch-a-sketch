@@ -2,22 +2,31 @@
     box-sizing: border-box;
 }
 
-.canvas {
+#canvas {
+    border: thin solid red;
     padding: 0;
     display: flex;
-    justify-content: center;
+    align-items: center;
     flex-wrap: wrap;
-    width: 35%;
+    width: 28%;
+    padding-bottom: 7%;
+    height: 0;
     margin: auto;
 }
 
-.canvas-square {
+
+
+.canvas-sqr {
     border: 1px solid black;
-    display: inline-block; 
     justify-content: space-evenly;
-    width: 6.25%;
-    padding-bottom: 6.25%;
+    width: 1%;
+    padding-bottom: 1%;
+    display: flex;
+    flex: 0 0 auto;
+    box-sizing: border-box;
 }
+
+
 /* 
 .canvas-square {
     border: 1px solid black;
