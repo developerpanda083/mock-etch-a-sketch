@@ -9,19 +9,34 @@
 </head>
 <body>
     <h1>Mock Etch-a-Sketch</h1>
-    <div class="slider-container">
-        <button id="small-btn">3x3</button>
-        <button id="med-btn">16x16</button>
-        <button id="large-btn">25x25</button>
-        <button id="eraser-btn">Clear</button>
-        <input type="color" id="color-picker">
-    </div>
+    <div class="outer-container">
+        <div class="settings-container">
+            <div class="size-container">
+                <button id="small-btn">Big Squares</button>
+                <button id="med-btn">Medium Squares</button>
+                <button id="large-btn">Small Squares</button> 
+            </div> 
+            <br> 
+            <div class="selection-container">
+                <button id="color-btn">Color: <input type="color" id="color-picker"></button>
+                <button id="rainbow-btn" data-color="rainbow">Random</button>
+                <button id="clear-btn" data-color="clear">Clear</button>
+            </div>
+            <div class="directions-container">
+                <p>Click and hold to draw on the canvas!</p>
+            </div>
+        </div>
 
-    <div id="canvas-container" >
-        <div id="canvas">
+        <div id="canvas-container" >
+            <div id="canvas">
 
+            </div>
         </div>
     </div>
+
+    <footer>
+        <p>This project was done as a part of The Odin Project's curriculum.</p>
+    </footer>
     
     <script src="index.js">
 
